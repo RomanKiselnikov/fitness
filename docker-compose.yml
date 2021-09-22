@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: django.Dockerfile
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput &&  gunicorn keyif.wsgi:application --bind 0.0.0.0:8080"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput &&  gunicorn keyif.wsgi:application --bind 0.0.0.0:8081"
     volumes:
       - ./static:/fitness/static
       - ./media:/fitness/media
