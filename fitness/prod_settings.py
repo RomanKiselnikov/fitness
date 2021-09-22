@@ -12,11 +12,16 @@ ALLOWED_HOSTS = ['*']
 # Настройка почты
 
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": 'django.db.backends.postgresql_psycopg2',
+        "NAME": 'fitness_bd',
+        "USER": 'fitness',
+        "PASSWORD": 'PWghdRet',
+        "HOST": 'localhost',
+        "PORT": '5432',
     }
+
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
