@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  app:
+    restart: always
+    build:
+      context: .
+      dockerfile: django.Dockerfile
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput &&  gunicorn keyif.wsgi:application --bind 0.0.0.0:8080"
+    volumes:
+      - ./static:/fitness/static
+      - ./media:/fitness/media
+      - ./logs:/fitness/logs
+      - ./db.sqlite3:/fitness/db.sqlite3
+    expose:
+      - 8080
+    environment:
+      - DEBUG=0
+      - SECRET_KEY=Grsdfqsd213((@!1349sdfkal8WFawl834w
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+
